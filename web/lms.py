@@ -291,6 +291,7 @@ def buy_items():
             Item.id == want_buy_item.id_original_item
             ).first()
         item_in_store.count -= 1
+        item_in_store.count_buy += 1
         db_sess.commit()
         flash('Вы купили товары!!!!!!!!!!!!!', 'info')
 
