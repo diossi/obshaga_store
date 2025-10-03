@@ -27,7 +27,6 @@ def get_items():
 @blueprint.route('/api/items/<int:category_id>')
 def get_items_by_category(category_id):
     db_sess = db_session.create_session()
-    # category_id можно использовать для фильтрации по type_wear
     items = db_sess.query(Item).filter(Item.type_wear == str(category_id), Item.is_see == True).all()
     return jsonify({
         'items': [item.to_dict_frontend() for item in items]
@@ -73,7 +72,6 @@ def delete_item(item_id):
     return jsonify({'success': 'OK'})
 
 
-# Новые API endpoints для корзины
 @blueprint.route('/api/cart/add', methods=['POST'])
 @login_required
 def api_cart_add():
@@ -83,7 +81,6 @@ def api_cart_add():
 
     db_sess = db_session.create_session()
 
-    # Проверяем есть ли уже товар в корзине
     existing_item = db_sess.query(WantBuyItem).filter(
         WantBuyItem.id_user == current_user.id,
         WantBuyItem.id_original_item == product_id

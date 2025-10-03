@@ -55,7 +55,6 @@
 
 {% block scripts %}
 <script>
-    // Удаление товаров из корзины
     document.querySelectorAll('.remove-from-cart').forEach(button => {
         button.addEventListener('click', function() {
             removeFromCart(this.dataset.itemId);

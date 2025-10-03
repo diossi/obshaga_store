@@ -25,7 +25,6 @@ class Item(SqlAlchemyBase, UserMixin, SerializerMixin):
                                 sqlalchemy.ForeignKey("users.id"))
     user = orm.relationship('User')
 
-    # Новые методы для совместимости с фронтендом
     @property
     def image_url(self):
         """Для совместимости с фронтендом"""

@@ -18,7 +18,6 @@ class User(SqlAlchemyBase, UserMixin, SerializerMixin):
     sity = sqlalchemy.Column(sqlalchemy.String, default='None', nullable=True)
     the_product_of_interest = sqlalchemy.Column(sqlalchemy.String, default='None', nullable=True)
     gender = sqlalchemy.Column(sqlalchemy.String, default='None', nullable=True)
-    # Убрано поле login
     balance = sqlalchemy.Column(sqlalchemy.Integer, default=0, nullable=True)
     date_reg = sqlalchemy.Column(sqlalchemy.DateTime,
                                  default=datetime.datetime.now)
